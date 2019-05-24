@@ -51,8 +51,27 @@
     <div class="main" id="main_body">
         <iframe src="main_count.html" frameborder="0" id="main_frame" name="main_frame" frameborder="0" scrolling="auto"></iframe>
     </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">提示信息</h4>
+            </div>
+            <div class="modal-body my_modalBody">
+              确认退出
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary">确认</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
 
 
+      
 
     <script>
         var $level01 = $('.level01');
@@ -106,3 +125,34 @@
 
 </body>
 </html>
+<script src="./js/bootstrap/js/bootstrap.min.js"></script>
+<script>
+$(function(){
+    $(".icon-tuichu").parent().click(function(){
+        $("#myModal").modal()
+       
+    })
+    $(".btn-primary").click(function(){
+            // 接口的基础地址为 https://autumnfish.cn/big
+            // 退出登录
+            // 请求地址：/admin/logout
+            // 请求方式：post
+            // 请求参数：无
+            // 返回数据：无
+            $.ajax({
+            url: 'https://autumnfish.cn/big/admin/logout',
+            type: 'post',
+            // data: {
+            //    key: '2162602fd87240a8b7bba7431ffd379b',
+            //    info: '我还可以调用你几次？'},
+            //dataType: 'json'
+            success: function(backData) {
+                //  console.log(backData)
+                if(backData.code==200){
+                    window.location.href="./login.html"
+                }
+            }
+            });
+        })
+})
+</script>
