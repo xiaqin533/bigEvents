@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/iconfont.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="./js/bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -30,7 +31,74 @@
         </div>
 
     </div> 
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">提示信息</h4>
+            </div>
+            <div class="modal-body my_modalBody">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary">确认</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
 
 </body>
 
 </html>
+<script src="./js/jquery-1.12.4.min.js"></script>
+<script src="./js/bootstrap/js/bootstrap.min.js"></script>
+<script>
+$(function(){
+    $(".input_sub").click(function(e){
+        e.preventDefault();
+        var user_name=$(".input_txt").val().trim()
+        var password=$(".input_pass").val().trim()
+        // console.log(user_name)
+        // console.log(password)
+   
+        if(user_name==""||password==""){
+            $(".my_modalBody").text("记得输入用户名和密码哦！")
+            // alert("用户名或密码不能为空,请输入")
+            $("#myModal").modal()
+            return
+        }
+        // 接口的基础地址为 https://autumnfish.cn/big
+        //         用户登录
+        // 请求地址：/admin/login
+        // 请求方式：post
+        // 请求参数：
+        // 名称	类型	说明
+        // user_name	string	用户名（admin）
+        // password	string	密码(123456)
+        $.ajax({
+            url:"https://autumnfish.cn/big/admin/login",
+            type:"post",
+            data:{
+                user_name:user_name,
+                password:password
+
+            },
+            success:function(backData){
+                console.log(backData)
+                if(backData.code==400){
+                    $(".my_modalBody").text("用户名或密码输入错误！")
+            
+            $("#myModal").modal()
+                }
+                if(backData.code==200){
+                    window.location.href="./index.html"
+                }
+            }
+        })
+       
+    })
+})
+</script>
