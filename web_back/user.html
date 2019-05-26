@@ -71,6 +71,7 @@
 <script>
 $(function () {
     $.ajax({
+
     url: 'https://autumnfish.cn/big32/admin/userinfo_get',
     type: 'get',
     
@@ -84,6 +85,14 @@ $(function () {
          }
     
     });
+//change事件
+$('#exampleInputFile').change(function(){
+    //files是dom属性
+    var file=this.files[0]
+    var url=URL.createObjectURL(file)
+    $(this).prev().attr('src',url)
 })
+})
+
 
 </script>
