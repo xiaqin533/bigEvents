@@ -74,7 +74,7 @@
 $(function () {
     $.ajax({
 
-    url: 'https://autumnfish.cn/big32/admin/userinfo_get',
+    url: 'http://localhost:8000/admin/userinfo_get',
     type: 'get',
     
     success: function(backData) {
@@ -83,7 +83,7 @@ $(function () {
             $('input.'+key).val(backData.data[key])
                 
              }
-             $('.user_pic').attr('src',backData.data.user_pic)
+             $('img.user_pic').attr('src',backData.data.user_pic)
          }
     
     });
@@ -92,13 +92,13 @@ $('#exampleInputFile').change(function(){
     //files是dom属性
     var file=this.files[0]
     var url=URL.createObjectURL(file)
-    $(this).prev().attr('src',url)
+    $(this).siblings('img').attr('src',url)
 })
 $('.btn-success').click(function(e){
     e.preventDefault()
     var formData=new FormData($(".article_form")[0])
     $.ajax({
-        url:"https://autumnfish.cn/big32/admin/userinfo_edit",
+        url:"http://localhost:8000/admin/userinfo_edit",
         type:"post",
         data:formData,
         //jq不要帮我们设置请求头

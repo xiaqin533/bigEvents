@@ -157,18 +157,19 @@ $(function(){
 })
 //获取用户信息
 $.ajax({
-url: 'https://autumnfish.cn/big32/admin/getuser',
+url: 'http://localhost:8000/admin/getuser',
 type: 'get',
 
 success: function(backData) {
      console.log(backData)
      $('.user_info img').attr('src',backData.data.user_pic)
+     $('.user_center_link img').attr('src',backData.data.user_pic)
      $('.user_info i').text(backData.data.nickname)
 
 }
 });
 </script>
-<!-- 请求地址：https://autumnfish.cn/big32/admin/getuser
+<!-- 请求地址：ttp://localhost:8000/admin/getuser
 请求方式：get
 请求参数： -->
 
