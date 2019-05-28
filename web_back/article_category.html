@@ -168,7 +168,7 @@
     $(function () {
         function getCategory() {
             $.ajax({
-                url: 'http://localhost:8000/admin/category_search',
+                url: 'https://autumnfish.cn/big32/admin/category_search',
                 type: 'get',
 
                 success: function (backData) {
@@ -183,7 +183,7 @@
         window.deleteTr = function (id) {
             console.log(id)
             $.ajax({
-                url: "http://localhost:8000/admin/category_delete",
+                url: "https://autumnfish.cn/big32/admin/category_delete",
                 type: 'post',
                 data: {
                     id: id
@@ -200,7 +200,7 @@
         //新增分类
 
         // 编辑文章类别
-        // 请求地址：http://localhost:8000/admin/category_edit
+        // 请求地址：https://autumnfish.cn/big32/admin/category_edit
         // 请求方式：post
         // 请求参数：
         // 名称	类型	说明
@@ -236,7 +236,7 @@
             //如果按钮是保存
             if ($(this).hasClass('btn-success')) {
                 $.ajax({
-                    url: 'http://localhost:8000/admin/category_edit',
+                    url: 'https://autumnfish.cn/big32/admin/category_edit',
                     type: 'post',
                     data: $('form').serialize(),
                     success: function (backData) {
@@ -251,7 +251,7 @@
                
                 $.ajax({
                     
-                    url: 'http://localhost:8000/admin/category_add',
+                    url: 'https://autumnfish.cn/big32/admin/category_add',
                     type: 'post',
                     data: {
                         name: $('.cate_name').val(),
