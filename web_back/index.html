@@ -133,14 +133,14 @@ $(function(){
        
     })
     $(".btn-primary").click(function(){
-            // 接口的基础地址为 https://autumnfish.cn/big
+            // 接口的基础地址为 http://localhost:8000
             // 退出登录
             // 请求地址：/admin/logout
             // 请求方式：post
             // 请求参数：无
             // 返回数据：无
             $.ajax({
-            url: 'https://autumnfish.cn/big/admin/logout',
+            url: 'http://localhost:8000/admin/logout',
             type: 'post',
             // data: {
             //    key: '2162602fd87240a8b7bba7431ffd379b',
@@ -157,7 +157,7 @@ $(function(){
 })
 //获取用户信息
 $.ajax({
-url: 'https://autumnfish.cn/big32/admin/getuser',
+url: 'http://localhost:8000/admin/getuser',
 type: 'get',
 
 success: function(backData) {
